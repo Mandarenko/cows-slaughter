@@ -29,6 +29,7 @@ Page {
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: "Singleplayer"
+                onClicked: pageStack.push(Qt.resolvedUrl("GamePage.qml"))
             }
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter

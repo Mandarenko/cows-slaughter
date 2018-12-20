@@ -25,7 +25,8 @@ DISTFILES += qml/cows-slaughter.qml \
     rpm/cows-slaughter.spec \
     rpm/cows-slaughter.yaml \
     translations/*.ts \
-    cows-slaughter.desktop
+    cows-slaughter.desktop \
+    qml/pages/GamePage.qml
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
 
