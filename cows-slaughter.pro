@@ -20,6 +20,7 @@ DISTFILES += qml/cows-slaughter.qml \
     qml/cover/CoverPage.qml \
     qml/pages/FirstPage.qml \
     qml/pages/SecondPage.qml \
+    qml/service/Dao.qml \
     rpm/cows-slaughter.changes.in \
     rpm/cows-slaughter.changes.run.in \
     rpm/cows-slaughter.spec \
