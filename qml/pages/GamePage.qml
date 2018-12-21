@@ -3,9 +3,9 @@ import Sailfish.Silica 1.0
 
 Page {
     property int attempt: 8
-    property var statList: [{Numbers: 1234, Bulls: 1, Cows: 1}]
+    property var statList: []
+    property var answer
     id: page
-
     SilicaListView{
         id: listView
         model: statList
@@ -14,7 +14,7 @@ Page {
         header: Column {
             width: parent.width
             PageHeader {
-                title: qsTr("Try " + attempt)
+                title: qsTr("Singleplayer")
             }
             Label{
                 font.bold: true
@@ -86,6 +86,7 @@ Page {
                 IconButton {
                     id: acceptButton
                     icon.source: "image://theme/icon-m-enter-accept"
+                    onClicked: checkNumber([numberField1.text, numberField2.text, numberField3.text, numberField4.text])
                 }
             }
         }
@@ -123,5 +124,26 @@ Page {
                 }
             }
         }
+    }
+
+    function checkNumber(nums) {
+        if(attempt <= 0) {
+            pageStack.push(Qt.resolvedUrl("GameOverPage.qml"), { answerWas: answer });
+            return;
+        }
+        var cows = 0, bulls = 0;
+        for(var i = 0; i <= 3; i++)
+            for(var j = 0; j <=3; j++)
+                if(nums[i] == answer[j]) {
+                    if(i == j) bulls++;
+                    else cows++;
+                    break;
+                }
+        if(bulls === 4) {
+            pageStack.push(Qt.resolvedUrl("YouWonPage.qml"), { spentAttempts: 8 - attempt + 1 });
+            return;
+        }
+        attempt--;
+        statList = statList.concat({Numbers: (nums[0].toString() + nums[1].toString() + nums[2].toString() + nums[3].toString()), Bulls: bulls, Cows: cows});
     }
 }

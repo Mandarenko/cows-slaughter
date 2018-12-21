@@ -8,7 +8,7 @@ ApplicationWindow
     id: applicationWindow
     Dao { id: dao }
 
-    initialPage: Component { FirstPage { } }
+    initialPage: Component { MainMenu { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 }

@@ -9,7 +9,7 @@
     </message>
 </context>
 <context>
-    <name>FirstPage</name>
+    <name>MainMenu</name>
     <message>
         <source>Show Ratings</source>
         <translation type="unfinished"></translation>
