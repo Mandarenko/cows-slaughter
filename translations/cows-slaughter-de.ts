@@ -22,12 +22,8 @@
 <context>
     <name>RatingsPage</name>
     <message>
-        <source>Ratings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Item</source>
-        <translation type="unfinished">Element</translation>
+        <source></source>
+        <translation></translation>
     </message>
 </context>
 </TS>

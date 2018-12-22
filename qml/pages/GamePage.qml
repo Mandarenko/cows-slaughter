@@ -29,60 +29,60 @@ Page {
                 width: parent.width
                 spacing: Theme.paddingLarge
                 Rectangle {
-                       width: numberField1.width
-                       height: numberField1.height
-                       color: "#20B2AA"
-                       radius: 20
-                       opacity: 0.3
-                       border { color: "green"; width: 5 }
-                       TextField {
-                           id: numberField1
-                           validator: IntValidator { bottom: 0; top: 9 }
-                           font.bold: true
-                           font.pixelSize: Theme.fontSizeHuge
-                       }
+                    width: numberField1.width
+                    height: numberField1.height
+                    color: "#20B2AA"
+                    radius: 20
+                    opacity: 0.3
+                    border { color: "green"; width: 5 }
+                    TextField {
+                        id: numberField1
+                        validator: IntValidator { bottom: 0; top: 9 }
+                        font.bold: true
+                        font.pixelSize: Theme.fontSizeHuge
+                    }
                 }
                 Rectangle {
-                       width: numberField2.width
-                       height: numberField2.height
-                       color: "#20B2AA"
-                       radius: 20
-                       opacity: 0.3
-                       border { color: "green"; width: 5 }
-                       TextField {
-                           id: numberField2
-                           validator: IntValidator { bottom: 0; top: 9 }
-                           font.bold: true
-                           font.pixelSize: Theme.fontSizeHuge
-                       }
+                    width: numberField2.width
+                    height: numberField2.height
+                    color: "#20B2AA"
+                    radius: 20
+                    opacity: 0.3
+                    border { color: "green"; width: 5 }
+                    TextField {
+                        id: numberField2
+                        validator: IntValidator { bottom: 0; top: 9 }
+                        font.bold: true
+                        font.pixelSize: Theme.fontSizeHuge
+                    }
                 }
                 Rectangle {
-                       width: numberField3.width
-                       height: numberField3.height
-                       color: "#20B2AA"
-                       radius: 20
-                       opacity: 0.3
-                       border { color: "green"; width: 5 }
-                       TextField {
-                           id: numberField3
-                           validator: IntValidator { bottom: 0; top: 9 }
-                           font.bold: true
-                           font.pixelSize: Theme.fontSizeHuge
-                       }
+                    width: numberField3.width
+                    height: numberField3.height
+                    color: "#20B2AA"
+                    radius: 20
+                    opacity: 0.3
+                    border { color: "green"; width: 5 }
+                    TextField {
+                        id: numberField3
+                        validator: IntValidator { bottom: 0; top: 9 }
+                        font.bold: true
+                        font.pixelSize: Theme.fontSizeHuge
+                    }
                 }
                 Rectangle {
-                       width: numberField4.width
-                       height: numberField4.height
-                       color: "#20B2AA"
-                       radius: 20
-                       opacity: 0.3
-                       border { color: "green"; width: 5 }
-                       TextField {
-                           id: numberField4
-                           validator: IntValidator { bottom: 0; top: 9 }
-                           font.bold: true
-                           font.pixelSize: Theme.fontSizeHuge
-                       }
+                    width: numberField4.width
+                    height: numberField4.height
+                    color: "#20B2AA"
+                    radius: 20
+                    opacity: 0.3
+                    border { color: "green"; width: 5 }
+                    TextField {
+                        id: numberField4
+                        validator: IntValidator { bottom: 0; top: 9 }
+                        font.bold: true
+                        font.pixelSize: Theme.fontSizeHuge
+                    }
                 }
                 IconButton {
                     id: acceptButton
@@ -128,30 +128,30 @@ Page {
     }
 
     function checkNumber(nums) {
-            if(attempt <= 0) {
-                pageStack.push(Qt.resolvedUrl("GameOverPage.qml"), { answerWas: answer });
-                return;
-            }
-            var cows = 0, bulls = 0, tmp = [];
-            for(var i = 0; i <= 3; i++){
-                if(tmp.indexOf(+nums[i]) == -1)
-                    tmp.push(+nums[i])
-                else {
-                    statList = statList.concat({Numbers: "Wrong input: Similar Numbers.", Bulls: "-", Cows: "-", Error: true});
-                    return;
-                }
-                for(var j = 0; j <=3; j++)
-                    if(nums[i] == answer[j]) {
-                        if(i == j) bulls++;
-                        else cows++;
-                        break;
-                    }
-            }
-            if(bulls === 4) {
-                pageStack.push(Qt.resolvedUrl("YouWonPage.qml"), { player: player, spentAttempts: 8 - attempt + 1 });
-                return;
-            }
-            attempt--;
-            statList = statList.concat({Numbers: ("" + (+nums[0]) + (+nums[1]) + (+nums[2]) + (+nums[3])), Bulls: bulls, Cows: cows, Error: false});
+        if(attempt <= 0) {
+            pageStack.push(Qt.resolvedUrl("GameOverPage.qml"), { answerWas: answer });
+            return;
         }
+        var cows = 0, bulls = 0, tmp = [];
+        for(var i = 0; i <= 3; i++){
+            if(tmp.indexOf(+nums[i]) == -1)
+                tmp.push(+nums[i])
+            else {
+                statList = statList.concat({Numbers: "Wrong input: Similar Numbers.", Bulls: "-", Cows: "-", Error: true});
+                return;
+            }
+            for(var j = 0; j <=3; j++)
+                if(nums[i] == answer[j]) {
+                    if(i == j) bulls++;
+                    else cows++;
+                    break;
+                }
+        }
+        if(bulls === 4) {
+            pageStack.push(Qt.resolvedUrl("YouWonPage.qml"), { player: player, spentAttempts: 8 - attempt + 1 });
+            return;
+        }
+        attempt--;
+        statList = statList.concat({Numbers: ("" + (+nums[0]) + (+nums[1]) + (+nums[2]) + (+nums[3])), Bulls: bulls, Cows: cows, Error: false});
+    }
 }
