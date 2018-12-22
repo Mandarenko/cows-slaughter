@@ -29,6 +29,8 @@ DISTFILES += qml/cows-slaughter.qml \
     qml/pages/GameOverPage.qml \
     qml/pages/YouWonPage.qml \
     qml/pages/RatingsPage.qml \
+    qml/pages/AuthPage.qml \
+    qml/pages/AuthAndNumberPage.qml \
     qml/DB.js \
     qml/pages/AuthPage.qml \
     qml/pages/AboutPage.qml \
