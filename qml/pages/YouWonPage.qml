@@ -1,5 +1,8 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtQuick.LocalStorage 2.0
+
+import "../DB.js" as DB
 
 Page {
     property int spentAttempts
@@ -30,6 +33,7 @@ Page {
 
     function reloadApp() {
         pageStack.clear();
+        DB.addPlayerRating(player, 1);
         pageStack.push(Qt.resolvedUrl("MainMenu.qml"));
     }
 }
