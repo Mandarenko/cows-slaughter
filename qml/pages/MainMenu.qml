@@ -39,6 +39,7 @@ Page {
                 id: button
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: "About"
+                onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
             }
             Image {
                 width: button.width
