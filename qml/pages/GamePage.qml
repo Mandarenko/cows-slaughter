@@ -1,5 +1,8 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtQuick.LocalStorage 2.0
+
+import "../DB.js" as DB
 
 Page {
     property int attempt: 8
@@ -148,6 +151,7 @@ Page {
                 }
         if(bulls === 4) {
             pageStack.push(Qt.resolvedUrl("YouWonPage.qml"), { spentAttempts: 8 - attempt + 1 });
+            DB.addPlayerRating(name, 1);
             return;
         }
         attempt--;

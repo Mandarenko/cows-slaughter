@@ -18,7 +18,6 @@ SOURCES += src/cows-slaughter.cpp
 
 DISTFILES += qml/cows-slaughter.qml \
     qml/cover/CoverPage.qml \
-    qml/service/Dao.qml \
     rpm/cows-slaughter.changes.in \
     rpm/cows-slaughter.changes.run.in \
     rpm/cows-slaughter.spec \
@@ -29,7 +28,8 @@ DISTFILES += qml/cows-slaughter.qml \
     qml/pages/MainMenu.qml \
     qml/pages/GameOverPage.qml \
     qml/pages/YouWonPage.qml \
-    qml/pages/RatingsPage.qml
+    qml/pages/RatingsPage.qml \
+    qml/DB.js
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
 
