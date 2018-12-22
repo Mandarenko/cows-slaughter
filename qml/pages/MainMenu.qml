@@ -34,6 +34,7 @@ Page {
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: "Multiplayer"
+                onClicked: pageStack.push(Qt.resolvedUrl("AuthAndNumberPage.qml"))
             }
             Button {
                 id: button
