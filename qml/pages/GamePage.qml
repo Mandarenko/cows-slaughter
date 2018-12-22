@@ -2,20 +2,19 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page {
-    property string player: "Player"
-    property int attempt: 8
-    property var statList: []
-    property var answer
+    property int maxAttempt: 8
+    property var players
+    property int currentPlayer
     id: page
     SilicaListView{
         id: listView
-        model: statList
+        model: players[currentPlayer].statList
         anchors.fill: parent
 
         header: Column {
             width: parent.width
             PageHeader {
-                title: qsTr("Player " + player)
+                title: qsTr(players[currentPlayer].name)
             }
             Label{
                 font.bold: true
@@ -128,30 +127,35 @@ Page {
     }
 
     function checkNumber(nums) {
-        if(attempt <= 0) {
-            pageStack.push(Qt.resolvedUrl("GameOverPage.qml"), { answerWas: answer });
-            return;
-        }
+        if(players.length == 1)
+            if(players[currentPlayer].attempt > maxAttempt) {
+                pageStack.push(Qt.resolvedUrl("GameOverPage.qml"), { answerWas: players[currentPlayer].answer });
+                return;
+            }
         var cows = 0, bulls = 0, tmp = [];
         for(var i = 0; i <= 3; i++){
             if(tmp.indexOf(+nums[i]) == -1)
                 tmp.push(+nums[i])
             else {
-                statList = statList.concat({Numbers: "Wrong input: Similar Numbers.", Bulls: "-", Cows: "-", Error: true});
+                players[currentPlayer].statList.push({Numbers: "Wrong input: Similar Numbers.", Bulls: "-", Cows: "-", Error: true});
+                playersChanged();
+                if(players.length == 2) pageStack.replace(Qt.resolvedUrl("GamePage.qml"), {players: players, currentPlayer: (currentPlayer + 1) % 2} );
                 return;
             }
             for(var j = 0; j <=3; j++)
-                if(nums[i] == answer[j]) {
+                if(nums[i] == players[currentPlayer].answer[j]) {
                     if(i == j) bulls++;
                     else cows++;
                     break;
                 }
         }
         if(bulls === 4) {
-            pageStack.push(Qt.resolvedUrl("YouWonPage.qml"), { player: player, spentAttempts: 8 - attempt + 1 });
+            pageStack.push(Qt.resolvedUrl("YouWonPage.qml"), { player: players[currentPlayer].name, spentAttempts: players[currentPlayer].attempt });
             return;
         }
-        attempt--;
-        statList = statList.concat({Numbers: ("" + (+nums[0]) + (+nums[1]) + (+nums[2]) + (+nums[3])), Bulls: bulls, Cows: cows, Error: false});
+        players[currentPlayer].attempt++;
+        players[currentPlayer].statList.push({Numbers: ("" + (+nums[0]) + (+nums[1]) + (+nums[2]) + (+nums[3])), Bulls: bulls, Cows: cows, Error: false});
+        playersChanged();
+        if(players.length == 2) pageStack.replace(Qt.resolvedUrl("GamePage.qml"), {players: players, currentPlayer: (currentPlayer + 1) % 2} );
     }
 }

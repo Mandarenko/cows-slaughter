@@ -35,7 +35,7 @@ Page {
         if(input.text == "")
             errorLabel.visible = true;
         else
-            pageStack.push(Qt.resolvedUrl("GamePage.qml"), { player: input.text, answer: generateAnswer() });
+            pageStack.push(Qt.resolvedUrl("GamePage.qml"), { players: [{name: input.text, answer: generateAnswer(), statList: [], attempt: 1}], currentPlayer: 0});
     }
 
     function generateAnswer() {

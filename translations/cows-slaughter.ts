@@ -29,7 +29,7 @@ It is a game that may date back a century or more which uses numbers or words. I
 <context>
     <name>CoverPage</name>
     <message>
-        <source>My Cover</source>
+        <source>Bulls&amp;Cows</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

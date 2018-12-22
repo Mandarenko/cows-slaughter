@@ -3,9 +3,7 @@ import Sailfish.Silica 1.0
 
 Page {
     id: page
-
     allowedOrientations: Orientation.All
-
     SilicaFlickable {
         anchors.fill: parent
 
@@ -34,7 +32,7 @@ Page {
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: "Multiplayer"
-                onClicked: pageStack.push(Qt.resolvedUrl("AuthAndNumberPage.qml"))
+                onClicked: pageStack.push(Qt.resolvedUrl("AuthAndNumberPage.qml"));
             }
             Button {
                 id: button

@@ -2,9 +2,16 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page {
+    property string players: ""
+    property var numbers: []
     Column {
         anchors.centerIn: parent
         spacing: Theme.paddingLarge
+        Label {
+            text: qsTr("Player " + (players == "" ? "1" : "2"))
+            font.pixelSize: Theme.fontSizeHuge
+            color: "#00FFFF"
+        }
         Label {
             text: "Please, enter your nickname: "
             font.pixelSize: Theme.fontSizeMedium
@@ -99,14 +106,25 @@ Page {
             errorLabel.visible = true;
             return;
         }
+        if(input.text == players){
+            errorLabel.text = "This name is already taken";
+            errorLabel.visible = true;
+            return;
+        }
+
         var number = validateNumber();
         if(!number.valid) {
             errorLabel.text = "Invalid number";
             errorLabel.visible = true;
             return;
         }
-        return { player: input.text, number: number.numberMade };
-
+        if(players.length < 1) {
+            pageStack.replace(Qt.resolvedUrl("AuthAndNumberPage.qml"), { players: input.text, numbers: number.numberMade});
+        }
+        else {
+            pageStack.replace(Qt.resolvedUrl("GamePage.qml"), {players: [{ name: players, answer: number.numberMade, statList: [], attempt: 1},
+                              { name: input.text, answer: numbers, statList: [], attempt: 1}], currentPlayer: 0});
+        }
     }
 
     function validateNumber() {
