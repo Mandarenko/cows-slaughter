@@ -12,11 +12,23 @@ Page {
         color: "Red"
     }
     Label {
+        id: answerLabel
         text: "Answer was " + answerWas
         anchors.top: label.bottom
         anchors.topMargin: Theme.paddingMedium
         anchors.horizontalCenter: parent.horizontalCenter
         font.pixelSize: Theme.fontSizeLarge
         color: "Red"
+    }
+    Button {
+        text: "To main menu"
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: answerLabel.bottom
+        onClicked: reloadApp()
+    }
+
+    function reloadApp() {
+        pageStack.clear();
+        pageStack.push(Qt.resolvedUrl("MainMenu.qml"));
     }
 }

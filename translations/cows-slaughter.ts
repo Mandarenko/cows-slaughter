@@ -9,13 +9,6 @@
     </message>
 </context>
 <context>
-    <name>GamePage</name>
-    <message>
-        <source>Singleplayer</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>MainMenu</name>
     <message>
         <source>Show Ratings</source>
