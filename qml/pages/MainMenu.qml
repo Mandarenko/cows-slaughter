@@ -29,7 +29,7 @@ Page {
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: "Singleplayer"
-                onClicked: pageStack.push(Qt.resolvedUrl("GamePage.qml"), { answer: generateAnswer() })
+                onClicked: pageStack.push(Qt.resolvedUrl("AuthPage.qml"))
             }
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -47,15 +47,5 @@ Page {
                 transform: Scale { yScale: 0.2}
             }
         }
-    }
-
-    function generateAnswer() {
-        var result = [];
-        while(result.length < 4) {
-            var rand = Math.floor(Math.random() * 10);
-            if(result.indexOf(rand) == -1)
-                result = result.concat(rand);
-        }
-        return result;
     }
 }

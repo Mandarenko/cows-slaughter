@@ -2,6 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page {
+    property string player: "Player"
     property int attempt: 8
     property var statList: []
     property var answer
@@ -14,7 +15,7 @@ Page {
         header: Column {
             width: parent.width
             PageHeader {
-                title: qsTr("Singleplayer")
+                title: qsTr("Player " + player)
             }
             Label{
                 font.bold: true
@@ -147,7 +148,7 @@ Page {
                     }
             }
             if(bulls === 4) {
-                pageStack.push(Qt.resolvedUrl("YouWonPage.qml"), { spentAttempts: 8 - attempt + 1 });
+                pageStack.push(Qt.resolvedUrl("YouWonPage.qml"), { player: player, spentAttempts: 8 - attempt + 1 });
                 return;
             }
             attempt--;

@@ -29,7 +29,8 @@ DISTFILES += qml/cows-slaughter.qml \
     qml/pages/MainMenu.qml \
     qml/pages/GameOverPage.qml \
     qml/pages/YouWonPage.qml \
-    qml/pages/RatingsPage.qml
+    qml/pages/RatingsPage.qml \
+    qml/pages/AuthPage.qml
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
 
