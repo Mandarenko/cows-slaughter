@@ -27,9 +27,9 @@
     </message>
 </context>
 <context>
-    <name>SecondPage</name>
+    <name>RatingsPage</name>
     <message>
-        <source>Nested Page</source>
+        <source>Ratings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

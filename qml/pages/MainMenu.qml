@@ -12,7 +12,7 @@ Page {
         PullDownMenu {
             MenuItem {
                 text: qsTr("Show Ratings")
-                onClicked: pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
+                onClicked: pageStack.push(Qt.resolvedUrl("RatingsPage.qml"))
             }
         }
 

@@ -37,6 +37,14 @@ Item {
         });
     }
 
+    function retrievePlayerRatings(callback) {
+        database = LocalStorage.openDatabaseSync("CowsSlaughterDatabase", "1.0");
+        database.readTransaction(function(tx) {
+            var result = tx.executeSql("SELECT * FROM RatingTable ORDER BY id ASC");
+            callback(result.rows)
+        });
+    }
+
     function retrievePlayerRating(id, callback) {
         database = LocalStorage.openDatabaseSync("CowsSlaughterDatabase", "1.0");
         database.readTransaction(function(tx) {

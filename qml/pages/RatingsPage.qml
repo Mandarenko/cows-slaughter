@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../service"
 
 Page {
     id: page
@@ -12,7 +13,7 @@ Page {
         model: 20
         anchors.fill: parent
         header: PageHeader {
-            title: qsTr("Nested Page")
+            title: qsTr("Ratings")
         }
         delegate: BackgroundItem {
             id: delegate

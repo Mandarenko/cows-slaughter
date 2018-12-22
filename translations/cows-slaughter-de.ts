@@ -27,14 +27,14 @@
     </message>
 </context>
 <context>
-    <name>SecondPage</name>
+    <name>RatingsPage</name>
     <message>
-        <source>Nested Page</source>
-        <translation>Unterseite</translation>
+        <source>Ratings</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Item</source>
-        <translation>Element</translation>
+        <translation type="unfinished">Element</translation>
     </message>
 </context>
 </TS>
