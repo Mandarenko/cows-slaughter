@@ -131,12 +131,19 @@ Page {
             pageStack.push(Qt.resolvedUrl("GameOverPage.qml"), { answerWas: answer });
             return;
         }
-        var cows = 0, bulls = 0;
+        var cows = 0, bulls = 0, tmp = [-1, -1, -1, -1];
         for(var i = 0; i <= 3; i++)
             for(var j = 0; j <=3; j++)
                 if(nums[i] == answer[j]) {
-                    if(i == j) bulls++;
-                    else cows++;
+                    if(i == j){
+                        bulls++;
+                        cows++;
+                        tmp[j] = answer[j];
+                    }
+                    else if(tmp[j] != answer[j]){
+                        cows++;
+                        tmp[j] = answer[j];
+                    }
                     break;
                 }
         if(bulls === 4) {
@@ -144,6 +151,6 @@ Page {
             return;
         }
         attempt--;
-        statList = statList.concat({Numbers: (nums[0].toString() + nums[1].toString() + nums[2].toString() + nums[3].toString()), Bulls: bulls, Cows: cows});
+        statList = statList.concat({Numbers: (nums[0].toString() + nums[1].toString() + nums[2].toString() + nums[3].toString()), Bulls: bulls, Cows: cows-bulls});
     }
 }
