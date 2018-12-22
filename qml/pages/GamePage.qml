@@ -137,7 +137,7 @@ Page {
                 if(nums[i] == answer[j]) {
                     if(i == j){
                         bulls++;
-                        cows++;
+                        if(tmp[j] != answer[j]) cows++;
                         tmp[j] = answer[j];
                     }
                     else if(tmp[j] != answer[j]){
