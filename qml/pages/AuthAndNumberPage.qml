@@ -31,60 +31,22 @@ Page {
             x: Theme.horizontalPageMargin
             width: parent.width
             spacing: Theme.paddingLarge
-            Rectangle {
-                width: numberField1.width
-                height: numberField1.height
-                color: "#20B2AA"
-                radius: 20
-                opacity: 0.3
-                border { color: "green"; width: 5 }
-                TextField {
-                    id: numberField1
-                    validator: IntValidator { bottom: 0; top: 9 }
-                    font.bold: true
-                    font.pixelSize: Theme.fontSizeHuge
-                }
-            }
-            Rectangle {
-                width: numberField2.width
-                height: numberField2.height
-                color: "#20B2AA"
-                radius: 20
-                opacity: 0.3
-                border { color: "green"; width: 5 }
-                TextField {
-                    id: numberField2
-                    validator: IntValidator { bottom: 0; top: 9 }
-                    font.bold: true
-                    font.pixelSize: Theme.fontSizeHuge
-                }
-            }
-            Rectangle {
-                width: numberField3.width
-                height: numberField3.height
-                color: "#20B2AA"
-                radius: 20
-                opacity: 0.3
-                border { color: "green"; width: 5 }
-                TextField {
-                    id: numberField3
-                    validator: IntValidator { bottom: 0; top: 9 }
-                    font.bold: true
-                    font.pixelSize: Theme.fontSizeHuge
-                }
-            }
-            Rectangle {
-                width: numberField4.width
-                height: numberField4.height
-                color: "#20B2AA"
-                radius: 20
-                opacity: 0.3
-                border { color: "green"; width: 5 }
-                TextField {
-                    id: numberField4
-                    validator: IntValidator { bottom: 0; top: 9 }
-                    font.bold: true
-                    font.pixelSize: Theme.fontSizeHuge
+            Repeater {
+                id: repeater
+                model: 4
+                delegate: Rectangle {
+                    width: numberField.width
+                    height: numberField.height
+                    color: "#20B2AA"
+                    radius: 20
+                    opacity: 0.3
+                    border { color: "green"; width: 5 }
+                    TextField {
+                        id: numberField
+                        validator: IntValidator { bottom: 0; top: 9 }
+                        font.bold: true
+                        font.pixelSize: Theme.fontSizeHuge
+                    }
                 }
             }
         }
@@ -128,7 +90,7 @@ Page {
     }
 
     function validateNumber() {
-        var result = [+numberField1.text, +numberField2.text, +numberField3.text, +numberField4.text];
+        var result = [+repeater.itemAt(0).children[0].text, +repeater.itemAt(1).children[0].text, +repeater.itemAt(2).children[0].text, +repeater.itemAt(3).children[0].text];
         for(var i = 0; i < 3; i++)
             for(var j = i + 1; j < 4; j++)
                 if(result[i] == result[j])
