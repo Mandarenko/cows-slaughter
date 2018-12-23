@@ -12,13 +12,14 @@ function initialiseDB() {
 function addPlayerRating(player_name, wins_number) {
     if (!db) initialiseDB();
 
+    var lcplayer = player_name.toLowerCase().replace(/\s+/g, '').replace(/\b\w/g, function(l){ return l.toUpperCase() });
     db.transaction(function(tx) {
         var rs = tx.executeSql('SELECT * FROM RatingTable');
         var model = [];
         var flag = false;
         for (var i = 0; i < rs.rows.length; i++) {
             var row = rs.rows.item(i);
-            if(player_name == row.player_name){
+            if(lcplayer == row.player_name){
                 db.transaction(function(tx) {
                     tx.executeSql('UPDATE RatingTable SET wins_number = ? WHERE id = ?', [row.wins_number+1, row.id]);
                 });
@@ -27,7 +28,7 @@ function addPlayerRating(player_name, wins_number) {
         }
         if(!flag)
             db.transaction(function(tx) {
-                tx.executeSql('INSERT INTO RatingTable(player_name, wins_number) VALUES(?, ?)', [player_name, wins_number]);
+                tx.executeSql('INSERT INTO RatingTable(player_name, wins_number) VALUES(?, ?)', [lcplayer, wins_number]);
             });
     });
 }
